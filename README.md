@@ -25,7 +25,7 @@ brew install neovim
 After installing `nvim` and all of the dependencies, clone this repo under the `~/.config` directory (macOS/Linux):
 
 ```sh
-git clone https://github.com/djamseed/nvim.git ~/.config
+git clone https://github.com/djamseed/nvim.git ~/.config/nvim
 ```
 
 When we first open Neovim, all the plugins will be automatically installed.
@@ -47,9 +47,9 @@ When we first open Neovim, all the plugins will be automatically installed.
 - Automatic tabstop/shiftwidth detection - [vim-sleuth](https://github.com/tpope/vim-sleuth)
 - Syntax highlighter and parser - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Commenting - [Comment.nvim](https://github.com/catppuccin/nvim)
-- Git integration - [vim-fugitive](https://github.com/tpope/vim-fugitive) 
+- Git integration - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - Git decorations - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-- Indentation guides - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) 
+- Indentation guides - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - LSPs/DAPs/Linters/Formatters manager - [mason.nvim](https://github.com/williamboman/mason.nvim)
 - LSP support - [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
 - Autocomplete engine and snippets - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
