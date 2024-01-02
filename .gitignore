@@ -55,4 +55,7 @@ tags
 # Persistent undo
 [._]*.un~
 
+# Ignore the lazy-lock.json file
+lazy-lock.json
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,vim
