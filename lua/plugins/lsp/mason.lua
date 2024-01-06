@@ -2,7 +2,7 @@
 -- LSP servers, DAP servers, linters and formatters
 return {
     "williamboman/mason.nvim",
-    events = "VeryLazy",
+    event = "VeryLazy",
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
