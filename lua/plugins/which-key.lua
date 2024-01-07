@@ -19,7 +19,6 @@ return {
             ["<leader>h"] = { name = "Harpoon", _ = "which_key_ignore" },
             ["<leader>r"] = { name = "Rename", _ = "which_key_ignore" },
             ["<leader>s"] = { name = "Split", _ = "which_key_ignore" },
-            ["<leader>t"] = { name = "Tab", _ = "which_key_ignore" },
             ["<leader>w"] = { name = "Session", _ = "which_key_ignore" },
         })
     end,
