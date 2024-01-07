@@ -49,6 +49,7 @@ return {
         lspconfig.bashls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            cmd = { "bash-language-server", "start" },
         })
 
         -- Protobuf
@@ -66,6 +67,7 @@ return {
         lspconfig.dockerls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            cmd = { "docker-langserver", "--stdio" },
         })
 
         -- go
@@ -144,6 +146,7 @@ return {
         lspconfig.ruff_lsp.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            cmd = { "ruff-lsp" },
             filetypes = { "python" },
         })
 
