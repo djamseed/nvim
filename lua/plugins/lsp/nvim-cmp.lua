@@ -27,7 +27,13 @@ return {
                 format = lspkind.cmp_format({
                     ellipsis_char = "...",
                     maxwidth = 50,
-                    mode = "symbol", -- Show only symbol annotations
+                    mode = "symbol_text", -- Show only symbol annotations
+                    menu = {
+                        nvim_lsp = "[LSP]",
+                        luasnip = "[LuaSnip]",
+                        buffer = "[Buffer]",
+                        path = "[Path]",
+                    },
                 }),
             },
             mapping = cmp.mapping.preset.insert({
@@ -69,6 +75,9 @@ return {
                 { name = "buffer" }, -- Text within current buffer
                 { name = "path" }, -- File system paths
             }),
+            view = {
+                entries = { name = "custom", selection_order = "near_cursor" },
+            },
         })
     end,
 }
