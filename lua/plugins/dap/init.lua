@@ -3,6 +3,7 @@ return {
     "mfussenegger/nvim-dap",
     dependencies = {
         { "jay-babu/mason-nvim-dap.nvim", lazy = true },
+        { "theHamsta/nvim-dap-virtual-text", lazy = true },
     },
     event = "VeryLazy",
     config = function()
@@ -26,8 +27,7 @@ return {
         map("n", "<F8>", dap.step_over, { desc = "Debug: Step Over" })
         map("n", "<S-F8>", dap.step_out, { desc = "Debug: Step Out" })
         map("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
-        map("n", "<leader>B", function()
-            dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-        end, { desc = "Debug: Set Breakpoint" })
+        map("n", "<leader>B", dap.set_breakpoint, { desc = "Debug: Set Breakpoint" })
+        map("n", "<leader>bc", dap.clear_breakpoints, { desc = "Debug: Clear all Breakpoints" })
     end,
 }

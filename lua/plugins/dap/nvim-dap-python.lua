@@ -7,6 +7,6 @@ return {
     },
     ft = "python",
     config = function()
-        require("dap-python").setup("~/.local/share/nvim/mason/packages/debugpy/debugpy")
+        require("dap-python").setup(os.getenv("HOME") .. "/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
     end,
 }

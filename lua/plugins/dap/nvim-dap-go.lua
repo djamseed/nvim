@@ -8,16 +8,8 @@ return {
     ft = "go",
     config = function()
         require("dap-go").setup({
-            dap_configurations = {
-                {
-                    type = "go",
-                    name = "Attach remote",
-                    mode = "remote",
-                    request = "attach",
-                },
-            },
             delve = {
-                path = "~/.local/share/nvim/mason/packages/delve/dlv",
+                path = os.getenv("HOME") .. "/.local/share/nvim/mason/bin/dlv",
             },
         })
     end,
