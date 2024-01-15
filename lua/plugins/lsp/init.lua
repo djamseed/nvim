@@ -18,21 +18,21 @@ return {
 
             local telescope = require("telescope.builtin")
 
-            keymap("<leader>rn", vim.lsp.buf.rename, "Rename")
-            keymap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-            keymap("gd", telescope.lsp_definitions, "Goto Definition")
-            keymap("gr", telescope.lsp_references, "Goto References")
-            keymap("gI", telescope.lsp_implementations, "Goto Implementation")
-            keymap("<leader>D", telescope.lsp_type_definitions, "Type Definition")
-            keymap("<leader>ds", telescope.lsp_document_symbols, "Document Symbols")
-            keymap("K", vim.lsp.buf.hover, "Hover Documentation")
-            keymap("<C-k>", vim.lsp.buf.signature_help, "Signature Help")
-            keymap("gD", vim.lsp.buf.declaration, "Goto Declaration")
+            keymap("gd", telescope.lsp_definitions, "LSP: Goto Definition")
+            keymap("gr", telescope.lsp_references, "LSP: Goto References")
+            keymap("gI", telescope.lsp_implementations, "LSP: Goto Implementation")
+            keymap("gD", vim.lsp.buf.declaration, "LSP: Goto Declaration")
+            keymap("K", vim.lsp.buf.hover, "LSP: Hover Documentation")
+            keymap("<C-k>", vim.lsp.buf.signature_help, "LSP: Signature Help")
+            keymap("<leader>rn", vim.lsp.buf.rename, "LSP: Rename")
+            keymap("<leader>ca", vim.lsp.buf.code_action, "LSP: Code Action")
+            keymap("<leader>D", telescope.lsp_type_definitions, "LSP: Type Definition")
+            keymap("<leader>ds", telescope.lsp_document_symbols, "LSP: Document Symbols")
 
             -- Command `:Format` local to the LSP buffer
             vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
                 vim.lsp.buf.format()
-            end, { desc = "Format current buffer with LSP" })
+            end, { desc = "Format current buffer with the LSP formatter" })
         end
 
         -- Change the Diagnostic symbols in the sign column
