@@ -10,7 +10,7 @@
 --      gc -> Comment the region with linewise comment
 --      gb -> Comment the region with blockwise comment
 return {
-    "numToStr/Comment.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
+	"numToStr/Comment.nvim",
+	event = { "BufReadPre", "BufNewFile" },
+	config = true,
 }

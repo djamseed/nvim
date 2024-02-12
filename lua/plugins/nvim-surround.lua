@@ -3,8 +3,8 @@
 --     Delete: ds{motion}{char}
 --     Change: cs{motion}{char}
 return {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` for the latest features
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
+	"kylechui/nvim-surround",
+	version = "*", -- Use for stability; omit to use `main` for the latest features
+	event = { "BufReadPre", "BufNewFile" },
+	opts = {},
 }

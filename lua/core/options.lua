@@ -22,6 +22,7 @@ opt.smartcase = true -- If you include mixed case in your search, assumes you wa
 opt.background = "dark" -- ColorSchemes that can be lihght or dark will be made dark
 opt.cmdheight = 1 -- Numnber of screen lines to use for the command-line
 opt.completeopt = "menuone,noselect" -- Better completion experience
+opt.fillchars = "eob: " -- Remove the `~` character at the end of a buffer
 opt.number = true -- Show absolute line number on cursor (when relative number is on)
 opt.pumblend = 19 -- Enables pseudo-transparency for the popup-menu
 opt.relativenumber = true -- Show relative line number
@@ -45,7 +46,7 @@ opt.splitright = true -- Split vertical window to the right
 opt.swapfile = false -- Disable the use of a swapfile for a buffer
 opt.undofile = true -- Save undo history by default
 opt.undolevels = 100 -- Max number of changes tht can be undone
-opt.updatetime = 300 -- Make updates happen faster
+opt.updatetime = 50 -- Make updates happen faster
 opt.writebackup = false -- Disable backup
 
 -- Folding
@@ -54,9 +55,9 @@ opt.foldlevel = 99 -- Folding when above 99
 
 -- Custom settings for the Cursor line
 local set_cursorline = function(event, value, pattern)
-    autocmd(event, "CursorLineControl", { pattern = pattern }, function()
-        vim.opt_local.cursorline = value
-    end)
+	autocmd(event, "CursorLineControl", { pattern = pattern }, function()
+		vim.opt_local.cursorline = value
+	end)
 end
 
 set_cursorline("WinLeave", false)
