@@ -3,6 +3,7 @@ return {
 	"rcarriga/nvim-dap-ui",
 	dependencies = {
 		{ "mfussenegger/nvim-dap", lazy = true },
+		{ "nvim-neotest/nvim-nio", lazy = true },
 	},
 	event = "VeryLazy",
 	config = function()
