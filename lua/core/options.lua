@@ -38,6 +38,7 @@ opt.clipboard:append("unnamedplus") -- Use system clipboard as default register
 opt.cursorline = true -- Highlight the current cursor line
 opt.guicursor = "" -- Set the cursor to block in insert mode
 opt.iskeyword:append("-") -- Treat words with dashes as a single word
+opt.inccommand = "split" -- Preview substitution live
 opt.mouse:append("a") -- Enable mouse mode
 opt.showcmd = true -- Show command in the last line of the screen
 opt.showmode = false -- If in Insert, Replace or Visual mode, put a message on the last line
