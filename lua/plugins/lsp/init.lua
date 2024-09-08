@@ -2,19 +2,9 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
+		"saghen/blink.cmp",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"hrsh7th/cmp-nvim-lsp",
-		{
-			"j-hui/fidget.nvim",
-			opts = {
-				notification = {
-					window = {
-						winblend = 0,
-					},
-				},
-			},
-		},
 	},
 	event = "VeryLazy",
 	config = function()
@@ -66,20 +56,18 @@ return {
 		})
 
 		local lspconfig = require("lspconfig")
-		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		-- List of LSP servers to install
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"bashls",
-				"bufls",
 				"dockerls",
 				"gopls",
 				"htmx",
 				"jsonls",
 				"lua_ls",
 				"pyright",
-				"ruff_lsp",
 				"rust_analyzer",
 				"yamlls",
 			},
@@ -93,19 +81,9 @@ return {
 					})
 				end,
 
-				-- Protobuf
-				["bufls"] = function()
-					lspconfig.bufls.setup({
-						capabilities = capabilities,
-						on_attach = on_attach,
-						cmd = { "bufls", "serve" },
-						filetypes = { "proto" },
-					})
-				end,
-
 				-- Docker
 				["dockerls"] = function()
-					lspconfig.bufls.setup({
+					lspconfig.dockerls.setup({
 						capabilities = capabilities,
 						on_attach = on_attach,
 						cmd = { "docker-langserver", "--stdio" },
