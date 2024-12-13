@@ -72,7 +72,6 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"bashls",
-				"bufls",
 				"dockerls",
 				"gopls",
 				"htmx",
@@ -90,16 +89,6 @@ return {
 					lspconfig[server_name].setup({
 						capabilities = capabilities,
 						on_attach = on_attach,
-					})
-				end,
-
-				-- Protobuf
-				["bufls"] = function()
-					lspconfig.bufls.setup({
-						capabilities = capabilities,
-						on_attach = on_attach,
-						cmd = { "bufls", "serve" },
-						filetypes = { "proto" },
 					})
 				end,
 
