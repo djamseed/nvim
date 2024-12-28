@@ -78,7 +78,6 @@ return {
 				"jsonls",
 				"lua_ls",
 				"pyright",
-				"ruff_lsp",
 				"rust_analyzer",
 				"yamlls",
 			},
@@ -94,7 +93,7 @@ return {
 
 				-- Docker
 				["dockerls"] = function()
-					lspconfig.bufls.setup({
+					lspconfig.dockerls.setup({
 						capabilities = capabilities,
 						on_attach = on_attach,
 						cmd = { "docker-langserver", "--stdio" },
