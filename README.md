@@ -54,3 +54,4 @@ When we first open Neovim, all the plugins will be automatically installed.
 - Autocomplete engine and snippets - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - Code formatting - [conform.nvim](https://github.com/stevearc/conform.nvim)
 - Debugger support - [nvim-dap](https://github.com/mfussenegger/nvim-dap) and [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
+
