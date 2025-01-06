@@ -1,38 +1,28 @@
 -- Mark and navigate to files
+-- https://github.com/ThePrimeagen/harpoon/tree/harpoon2
+
 return {
-	"ThePrimeagen/harpoon",
-	branch = "harpoon2",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
-	event = "VeryLazy",
+	'ThePrimeagen/harpoon',
+	branch = 'harpoon2',
+	event = 'VeryLazy',
 	config = function()
-		local harpoon = require("harpoon")
-		local map = require("core.utils").map
+		local harpoon = require('harpoon')
+		local keymap = require('core.utils').keymap
 
 		harpoon:setup()
 
-		map("n", "<leader>hm", function()
-			harpoon:list():append()
-		end, { desc = "Mark file with harpoon" })
+		keymap('<leader>mb', function() harpoon:list():append() end, { desc = 'Mark buffer' })
+		keymap('<leader>mq', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = 'Open harpoon quick menu' })
+		keymap('<leader>mp', function() harpoon:list():prev() end, { desc = 'Go to previous marked buffer' })
+		keymap('<leader>mn', function() harpoon:list():next() end, { desc = 'Go to next marked buffer' })
 
-		map("n", "<leader>hq", function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end, { desc = "Open the harpoon quick menu" })
-
-		map("n", "<leader>hp", function()
-			harpoon:list():prev()
-		end, { desc = "Go to the previous marked buffer" })
-
-		map("n", "<leader>hn", function()
-			harpoon:list():next()
-		end, { desc = "Go to the next marked buffer" })
-
-		-- Switch to any marked buffer (from 1 - 5)
-		for i = 1, 5 do
-			map("n", string.format("<leader>%s", i), function()
-				harpoon:list():select(i)
-			end, { desc = string.format("Switch to marked buffer %s", i) })
+		-- Switch to any marked buffer (from 1 - 9)
+		for i = 1, 9 do
+			keymap(
+				string.format('<leader>m%s', i),
+				function() harpoon:list():select(i) end,
+				{ desc = string.format('Switch to marked buffer %s', i) }
+			)
 		end
 	end,
 }

@@ -1,4 +1,6 @@
--- Smart comment
+-- Smart and Powerful commenting
+-- https://github.com/numToStr/Comment.nvim
+
 -- NORMAL mode
 --     gcc -> Linewise comment
 --     gbc -> Blockwise comment
@@ -9,8 +11,9 @@
 --  VISUAL Mode
 --      gc -> Comment the region with linewise comment
 --      gb -> Comment the region with blockwise comment
+
 return {
-	"numToStr/Comment.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	'numToStr/Comment.nvim',
+	event = { 'BufReadPost', 'BufNewFile' },
 	opts = {},
 }

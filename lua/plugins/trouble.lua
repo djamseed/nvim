@@ -1,29 +1,33 @@
+-- Pretty list for showing diagnostics
+-- https://github.com/folke/trouble.nvim
+
 return {
-	"folke/trouble.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	event = "VeryLazy",
+	'folke/trouble.nvim',
+	event = 'VeryLazy',
 	config = function()
-		local map = require("core.utils").map
-		local trouble = require("trouble")
+		local keymap = require('core.utils').keymap
+		local trouble = require('trouble')
 
-		map("n", "<leader>tt", function()
-			trouble.toggle({ mode = "diagnostics", auto_preview = false })
-		end, { desc = "Trouble: Open/Close" })
-
-		map("n", "<leader>tp", function()
-			trouble.previous({ mode = "diagnostics", skip_groups = true, jump = true })
-		end, { desc = "Trouble: Jump to the previous item" })
-
-		map("n", "<leader>tn", function()
-			trouble.next({ mode = "diagnostics", skip_groups = true, jump = true })
-		end, { desc = "Trouble: Jump to the next item" })
-
-		map("n", "<leader>tf", function()
-			trouble.first({ mode = "diagnostics", skip_groups = true, jump = true })
-		end, { desc = "Trouble: Jump to the first item" })
-
-		map("n", "<leader>tl", function()
-			trouble.last({ mode = "diagnostics", skip_groups = true, jump = true })
-		end, { desc = "Trouble: Jump to the last item" })
+		keymap('<leader>tt', function() trouble.toggle({ mode = 'diagnostics', auto_preview = false }) end, { desc = 'Open/Close' })
+		keymap(
+			'<leader>tp',
+			function() trouble.previous({ mode = 'diagnostics', skip_groups = true, jump = true }) end,
+			{ desc = 'Jump to the previous item' }
+		)
+		keymap(
+			'<leader>tn',
+			function() trouble.next({ mode = 'diagnostics', skip_groups = true, jump = true }) end,
+			{ desc = 'Jump to the next item' }
+		)
+		keymap(
+			'<leader>tf',
+			function() trouble.first({ mode = 'diagnostics', skip_groups = true, jump = true }) end,
+			{ desc = 'Jump to the first item' }
+		)
+		keymap(
+			'<leader>tl',
+			function() trouble.last({ mode = 'diagnostics', skip_groups = true, jump = true }) end,
+			{ desc = ' Jump to the last item' }
+		)
 	end,
 }
