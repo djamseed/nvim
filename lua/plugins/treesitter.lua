@@ -33,6 +33,7 @@ return {
 				'vimdoc',
 				'vim',
 				'yaml',
+				'zig',
 			},
 			highlight = {
 				enable = true,

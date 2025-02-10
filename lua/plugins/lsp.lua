@@ -207,6 +207,7 @@ return {
 					'rust-analyzer',
 				},
 			},
+			zlg = {},
 		}
 
 		-- Ensure the servers and tools above are installed
@@ -232,8 +233,10 @@ return {
 				'jsonls',
 				'lua_ls',
 				'omnisharp',
+				'ruff',
 				'rust_analyzer',
 				'yamlls',
+				'zls',
 			},
 			automatic_installation = true,
 			handlers = {

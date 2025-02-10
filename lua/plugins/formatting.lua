@@ -26,6 +26,7 @@ return {
 				sh = { 'shfmt' },
 				sql = { 'sql-formatter' },
 				yaml = { 'prettier' },
+				zig = { 'zig fmt' },
 			},
 			format_on_save = {
 				lsp_fallback = true,
