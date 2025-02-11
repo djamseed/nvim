@@ -18,6 +18,7 @@ return {
 	},
 	config = function()
 		require('fzf-lua').setup({
+			{ 'ivy' }, -- Use Telescope's ivy profile
 			defaults = {
 				prompt = '❯ ',
 			},
@@ -31,7 +32,6 @@ return {
 				},
 			},
 			winopts = {
-				split = 'belowright new',
 				preview = {
 					title = true,
 				},
