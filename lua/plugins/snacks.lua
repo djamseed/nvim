@@ -4,6 +4,7 @@
 return {
 	'folke/snacks.nvim',
 	opts = {
+		animate = { enabled = false },
 		bigfile = { enabled = true },
 		dashboard = {
 			enabled = true,
@@ -13,10 +14,17 @@ return {
 				{ section = 'startup' },
 			},
 		},
+		image = { enabled = true, force = true },
+		indent = {
+			enabled = true,
+			char = '.',
+			only_current = true,
+		},
 		notifier = {
 			enabled = true,
 			timeout = 3000,
 		},
-		quickfile = { enabled = true },
+		quickfile = {},
+		words = { enabled = true },
 	},
 }
