@@ -8,7 +8,7 @@ return {
 	config = function()
 		require('copilot').setup({
 			panel = { enabled = false },
-			suggestion = { enabled = false }, -- suggestions wil be handled by blink cmp
+			suggestion = { enabled = false }, -- suggestions will be handled by blink cmp
 		})
 	end,
 }
