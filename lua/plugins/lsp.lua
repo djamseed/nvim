@@ -165,14 +165,6 @@ return {
 					},
 				},
 			},
-			omnisharp = {
-				cmd = {
-					os.getenv('HOME') .. '/.local/share/nvim/mason/packages/omnisharp/libexec/Omnisharp',
-					'--languageserver',
-					'--hostPID',
-					tostring(vim.fn.getpid()),
-				},
-			},
 			ruff = {
 				commands = {
 					RuffAutofix = {
@@ -215,7 +207,6 @@ return {
 
 		require('mason-tool-installer').setup({
 			ensure_installed = {
-				'csharpier', -- Opiniated C# formatter
 				'gofumpt', -- Stricter Go formatter
 				'goimports', -- Formatter for Go imports
 				'prettier', -- Opiniated code formatter
@@ -232,7 +223,6 @@ return {
 				'htmx',
 				'jsonls',
 				'lua_ls',
-				'omnisharp',
 				'ruff',
 				'rust_analyzer',
 				'yamlls',
