@@ -1,4 +1,4 @@
--- Configuration for the Neovim LSP clients
+-- Configuration for the Neovm LSP clients
 -- https://github.com/neovim/nvim-lspconfig
 
 return {
@@ -220,7 +220,6 @@ return {
 			ensure_installed = {
 				'bashls',
 				'gopls',
-				'htmx',
 				'jsonls',
 				'lua_ls',
 				'ruff',
