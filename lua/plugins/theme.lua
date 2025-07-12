@@ -13,6 +13,9 @@ return {
 				italic = false,
 				transparency = true,
 			},
+			highlight_groups = {
+				Visual = { fg = 'text', bg = 'Love', inherit = false },
+			},
 		})
 		vim.cmd('colorscheme rose-pine')
 	end,
