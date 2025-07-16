@@ -4,30 +4,13 @@
 return {
 	'folke/trouble.nvim',
 	event = 'VeryLazy',
-	config = function()
-		local keymap = require('core.utils').keymap
-		local trouble = require('trouble')
-
-		keymap('<leader>tt', function() trouble.toggle({ mode = 'diagnostics', auto_preview = false }) end, { desc = 'Open/Close' })
-		keymap(
-			'<leader>tp',
-			function() trouble.previous({ mode = 'diagnostics', skip_groups = true, jump = true }) end,
-			{ desc = 'Jump to the previous item' }
-		)
-		keymap(
-			'<leader>tn',
-			function() trouble.next({ mode = 'diagnostics', skip_groups = true, jump = true }) end,
-			{ desc = 'Jump to the next item' }
-		)
-		keymap(
-			'<leader>tf',
-			function() trouble.first({ mode = 'diagnostics', skip_groups = true, jump = true }) end,
-			{ desc = 'Jump to the first item' }
-		)
-		keymap(
-			'<leader>tl',
-			function() trouble.last({ mode = 'diagnostics', skip_groups = true, jump = true }) end,
-			{ desc = ' Jump to the last item' }
-		)
-	end,
+	opts = {},
+	keys = {
+		{ '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Diagnostics (Trouble)' },
+		{ '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', desc = 'Buffer Diagnostics (Trouble)' },
+		{ '<leader>xp', '<cmd>Trouble  diagnostics prev<cr>', desc = 'Diagnostics: Jump to previous item (Trouble)' },
+		{ '<leader>xn', '<cmd>Trouble  diagnostics next<cr>', desc = 'Diagnostics: Jump to next item (Trouble)' },
+		{ '<leader>xL', '<cmd>Trouble loclist toggle<cr>', desc = 'Location List (Trouble)' },
+		{ '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List (Trouble)' },
+	},
 }

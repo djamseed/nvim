@@ -2,12 +2,15 @@ local M = {}
 
 ---@param lhs string
 ---@param rhs string|function
----@param opts table | nil
----@param mode string|table
+---@param opts table|nil
+---@param mode string|table|nil
 function M.keymap(lhs, rhs, opts, mode)
-	mode = mode or ''
+	mode = mode or 'n'
+	opts = opts or {}
 	local options = { noremap = true, silent = true }
-	if opts then options = vim.tbl_extend('force', options, opts) end
+	if opts then
+		options = vim.tbl_extend('force', options, opts)
+	end
 	vim.keymap.set(mode, lhs, rhs, options)
 end
 

@@ -17,11 +17,14 @@ return {
 				changedelete = { text = '~' },
 			},
 			on_attach = function(bufnr)
-				keymap('<leader>gb', function() gs.blame_line({ full = false }) end, { buffer = bufnr, desc = 'Git blame line' })
-				keymap('<leader>gh', gs.preview_hunk, { buffer = bufnr, desc = 'Git preview hunk' })
-				keymap('<leader>gs', gs.stage_hunk, { buffer = bufnr, desc = 'Git stage hunk' })
-				keymap('<leader>gr', gs.reset_hunk, { buffer = bufnr, desc = 'Git reset hunk' })
-				keymap('<leader>gu', gs.undo_stage_hunk, { buffer = bufnr, desc = 'Git undo stage hunk' })
+				keymap('<leader>hb', function()
+					gs.blame_line({ full = false })
+				end, { buffer = bufnr, desc = 'Git blame line' })
+				keymap('<leader>hd', gs.diffthis, { buffer = bufnr, desc = 'Git [D]iff against index' })
+				keymap('<leader>hp', gs.preview_hunk, { buffer = bufnr, desc = 'Git [P]review hunk' })
+				keymap('<leader>hs', gs.stage_hunk, { buffer = bufnr, desc = 'Git [S]tage hunk' })
+				keymap('<leader>hr', gs.reset_hunk, { buffer = bufnr, desc = 'Git [R]eset hunk' })
+				keymap('<leader>hu', gs.stage_hunk, { buffer = bufnr, desc = 'Git [U]ndo stage hunk' })
 			end,
 		})
 	end,

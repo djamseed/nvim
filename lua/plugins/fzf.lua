@@ -6,15 +6,16 @@ return {
 	event = 'VimEnter',
 	cmd = 'FzfLua',
 	keys = {
+		{ '<leader>f/', '<CMD>FzfLua grep_curbuf<CR>', desc = '[/] Fuzzily search in the current buffer', noremap = true, silent = true },
+		{ '<leader>fb', '<CMD>FzfLua buffers<CR>', desc = 'Find open buffers', noremap = true, silent = true },
+		{ '<leader>fd', '<CMD>FzfLua diagnostics_workspace<CR>', desc = 'Find diagnostics in workspace', noremap = true, silent = true },
 		{ '<leader>ff', '<CMD>FzfLua files<CR>', desc = 'Find files', noremap = true, silent = true },
 		{ '<leader>fg', '<CMD>FzfLua git_files<CR>', desc = 'Find git files', noremap = true, silent = true },
-		{ '<leader>fs', '<CMD>FzfLua live_grep_native<CR>', desc = 'Find words in current project', noremap = true, silent = true },
-		{ '<leader>fw', '<CMD>FzfLua grep_cword<CR>', desc = 'Find word under cursor', noremap = true, silent = true },
-		{ '<leader>fd', '<CMD>FzfLua diagnostics_workspace<CR>', desc = 'Find diagnostics in workspace', noremap = true, silent = true },
+		{ '<leader>fh', '<CMD>FzfLua helptags<CR>', desc = 'Find in help', noremap = true, silent = true },
 		{ '<leader>fr', '<CMD>FzfLua oldfiles<CR>', desc = 'Find recently opened files', noremap = true, silent = true },
-		{ '<leader>fb', '<CMD>FzfLua buffers<CR>', desc = 'Find existing buffers', noremap = true, silent = true },
-		{ '<leader>fh', '<CMD>FzfLua helptags<CR>', desc = 'Find help tags', noremap = true, silent = true },
-		{ '<leader>f/', '<CMD>FzfLua grep_curbuf<CR>', desc = '[/] Fuzzily search in the current buffer', noremap = true, silent = true },
+		{ '<leader>fs', '<CMD>FzfLua live_grep_native<CR>', desc = 'Find by Grep', noremap = true, silent = true },
+		{ '<leader>fw', '<CMD>FzfLua grep_cword<CR>', desc = 'Find current word', noremap = true, silent = true },
+		{ '<leader>fW', '<CMD>FzfLua grep_cWORD<CR>', desc = 'Find current word', noremap = true, silent = true },
 	},
 	config = function()
 		require('fzf-lua').setup({
@@ -33,6 +34,7 @@ return {
 			},
 			winopts = {
 				preview = {
+					default = 'bat_native',
 					title = true,
 				},
 			},

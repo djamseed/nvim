@@ -24,7 +24,7 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		quickfile = {},
+		quickfile = { enabled = true },
 		words = { enabled = true },
 	},
 }

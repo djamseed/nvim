@@ -5,9 +5,9 @@ return {
 	'neovim/nvim-lspconfig',
 	dependencies = {
 		-- Package manager for LSP servers, DAP servers, linters and formatters
-		{ 'williamboman/mason.nvim', config = true },
+		{ 'mason-org/mason.nvim', opts = {} },
 		-- Closes gaps between mason and lspconfig
-		'williamboman/mason-lspconfig.nvim',
+		'mason-org/mason-lspconfig.nvim',
 		-- Automatically install and upgrade third party tools
 		'WhoIsSethDaniel/mason-tool-installer.nvim',
 		{
@@ -17,7 +17,7 @@ return {
 			opts = {
 				library = {
 					-- Load luvit types when the `vim.uv` word is found
-					{ path = 'luvit-meta/library', words = { 'vim%.uv' } },
+					{ path = '${3rd}/luv/library', words = { 'vim%.uv' } },
 				},
 			},
 		},
@@ -45,21 +45,23 @@ return {
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
 				end
 
-				map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
-				map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-				map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
-				map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
-				map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-				map('<leader>D', require('fzf-lua').lsp_typedefs, 'Type [D]efinition')
-				map('<leader>ds', require('fzf-lua').lsp_document_symbols, '[D]ocument [S]ymbols')
-				map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-				map('<leader>ws', require('fzf-lua').lsp_live_workspace_symbols, '[W]orkspace [S]ymbols')
+				local fzf = require('fzf-lua')
+
+				map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+				map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+				map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+				map('grr', fzf.lsp_references, '[G]oto [R]eferences')
+				map('gri', fzf.lsp_implementations, '[G]oto [I]mplementation')
+				map('grd', fzf.lsp_definitions, '[G]oto [D]efinition')
+				map('grt', fzf.lsp_typedefs, '[G]oto [T]ype Definition')
+				map('gO', fzf.lsp_document_symbols, 'Open Document Symbols')
+				map('gW', fzf.lsp_live_workspace_symbols, 'Open Workspace Symbols')
 
 				-- The following two autocommands are used to highlight references of the
 				-- word under your cursor when your cursor rests there for a little while.
 				-- When you move your cursor, the highlights will be cleared (the second autocommand).
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
-				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+				if client and client.supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
 					local highlight_augroup = vim.api.nvim_create_augroup('user-lsp-highlight', { clear = false })
 					vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
 						buffer = event.buf,
@@ -83,12 +85,10 @@ return {
 				end
 
 				-- The following code creates a keymap to toggle inlay hints, if the language server supports them
-				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-					map(
-						'<leader>ch',
-						function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })) end,
-						'[C]ode [H]ints'
-					)
+				if client and client.supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+					map('<leader>th', function()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+					end, '[T]oggle Inlay [H]ints')
 				end
 			end,
 		})
@@ -109,8 +109,7 @@ return {
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
 		--  By adding blink.cmp, luasnip, etc, Neovim now has more capabilities.
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
+		local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 		-- Enable the following language servers
 		local servers = {
@@ -199,34 +198,22 @@ return {
 					'rust-analyzer',
 				},
 			},
-			zlg = {},
+			zls = {},
 		}
 
-		-- Ensure the servers and tools above are installed
-		require('mason').setup()
-
-		require('mason-tool-installer').setup({
-			ensure_installed = {
-				'gofumpt', -- Stricter Go formatter
-				'goimports', -- Formatter for Go imports
-				'prettier', -- Opiniated code formatter
-				'ruff', -- Python linter and formatter
-				'shfmt', -- Shell script formatter
-				'stylua', -- Opiniated Lua formatter
-			},
+		local ensure_installed = vim.tbl_keys(servers or {})
+		vim.list_extend(ensure_installed, {
+			'gofumpt', -- Stricter Go formatter
+			'goimports', -- Formatter for Go imports
+			'prettier', -- Opiniated code formatter
+			'ruff', -- Python linter and formatter
+			'shfmt', -- Shell script formatter
+			'stylua', -- Opiniated Lua formatter
 		})
+		require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
 		require('mason-lspconfig').setup({
-			ensure_installed = {
-				'bashls',
-				'gopls',
-				'jsonls',
-				'lua_ls',
-				'ruff',
-				'rust_analyzer',
-				'yamlls',
-				'zls',
-			},
+			ensure_installed = {},
 			automatic_installation = true,
 			handlers = {
 				function(server_name)

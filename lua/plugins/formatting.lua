@@ -8,7 +8,9 @@ return {
 	keys = {
 		{
 			'<leader>cf',
-			function() require('conform').format({ lsp_fallback = true, async = false, timeout_ms = 1000 }) end,
+			function()
+				require('conform').format({ lsp_format = 'fallback', async = true, timeout_ms = 1000 })
+			end,
 			mode = { 'n', 'v' },
 			desc = 'Format',
 		},
@@ -28,10 +30,11 @@ return {
 				zig = { 'zig fmt' },
 			},
 			format_on_save = {
-				lsp_fallback = true,
+				lsp_format = 'fallback',
 				async = false,
 				timeout_ms = 1000,
 			},
+			notify_on_error = false,
 		})
 	end,
 }

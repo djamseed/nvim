@@ -17,7 +17,6 @@ This repository host my personal Neovim configuration that works on Linux/macOS.
 - Debugger support - [nvim-dap](https://github.com/mfussenegger/nvim-dap) and [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
 - Code formatting - [conform](https://github.com/stevearc/conform.nvim)
 - Statusline - [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- Git wrapper - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - Git integration for buffers - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - Collection of QoL plugins - [snacks](https://github.com/folke/snacks.nvim)
 - Keyboard shortcut hints - [which-key](https://github.com/folke/which-key.nvim)
