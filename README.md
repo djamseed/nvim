@@ -1,31 +1,29 @@
 # nvim
 
-This repository host my personal Neovim configuration that works on Linux/macOS.
+This repository hosts my personal [Neovim](https://neovim.io) configuration that works on Linux/macOS.
 
-![nvim](nvim.png)
+![cover](nvim.png)
 
 ## Features
 
-- Plugin manager - [lazy](https://github.com/folke/lazy.nvim)
-- Theme - [Rose Pine](https://github.com/rose-pine/neovim)
-- File tree - [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-- Fuzzy finder - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
-- File navigation - [harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2)
-- Syntax highlighter and parser - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- LSP server configurations - [nvim-lsp](https://github.com/neovim/nvim-lspconfig)
-- Autocomplete engine and snippets - [blink](https://github.com/Saghen/blink.cmp)
-- Debugger support - [nvim-dap](https://github.com/mfussenegger/nvim-dap) and [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
-- Code formatting - [conform](https://github.com/stevearc/conform.nvim)
-- Statusline - [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- Git integration for buffers - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-- Collection of QoL plugins - [snacks](https://github.com/folke/snacks.nvim)
-- Keyboard shortcut hints - [which-key](https://github.com/folke/which-key.nvim)
-- Autopairs - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-- Add/change/delete surrounding delimiter pairs - [nvim-surround](https://github.com/kylechui/nvim-surround)
-- Commenting - [Comment](https://github.com/numToStr/Comment.nvim)
-- Indentation guides - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
-- tmux window navigator - [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
-- Package manager for LSP servers, DAP servers, linters and formatters - [mason.nvim](https://github.com/williamboman/mason.nvim)
+- Plugin manager: [lazy](https://github.com/folke/lazy.nvim)
+- Theme: [Rose Pine](https://github.com/rose-pine/neovim)
+- Fuzzy finder: [fzf-lua](https://github.com/ibhagwan/fzf-lua)
+- File tree: [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+- Collection of QoL plugins: [snacks](https://github.com/folke/snacks.nvim)
+- tmux window navigator: [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+- Statusline: [lualine](https://github.com/nvim-lualine/lualine.nvim)
+- Git integration for buffers: [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+- Keyboard shortcut hints: [which-key](https://github.com/folke/which-key.nvim)
+- Add/change/delete surrounding delimiter pairs: [mini.surround](https://github.com/echasnovski/mini.surround)
+- Commenting: [Comment](https://github.com/numToStr/Comment.nvim)
+- Autopairs: [mini.pairs](https://github.com/echasnovski/mini.pairs)
+- Syntax highlighter and parser: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- LSP: [Native LSP](https://neovim.io/doc/user/lsp.html)
+- Autocomplete engine and snippets: [blink](https://github.com/Saghen/blink.cmp)
+- Debugger support: [nvim-dap](https://github.com/mfussenegger/nvim-dap) and [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
+- Code formatting: [conform](https://github.com/stevearc/conform.nvim)
+- Package manager for LSP servers, DAP servers, linters and formatters: [mason.nvim](https://github.com/williamboman/mason.nvim)
 
 ## Install
 
