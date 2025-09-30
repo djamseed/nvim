@@ -73,6 +73,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
   end,
+
+  -- Diagnostics keymap
+  vim.keymap.set('n', '<leader>d', ':lua vim.diagnostic.setqflist({bufnr=0})<CR>', { desc = 'Show buffer diagnostics in quickfix list', noremap = true, silent = true }),
 })
 
 -- get information on attached LSP clients
