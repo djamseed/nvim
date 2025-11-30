@@ -19,7 +19,7 @@ autocmd('BufEnter', {
 autocmd('TextYankPost', {
   group = group,
   callback = function()
-    vim.highlight.on_yank({ hlgroup = 'IncSearch', timeout = 100 })
+    vim.hl.on_yank({ hlgroup = 'IncSearch', timeout = 100 })
   end,
 })
 
