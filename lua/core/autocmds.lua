@@ -33,6 +33,22 @@ autocmd('FileType', {
   end,
 })
 
+-- close some file types with <q>
+autocmd('FileType', {
+  group = group,
+  pattern = {
+    'checkhealth',
+    'help',
+    'lspinfo',
+    'notify',
+    'qf',
+  },
+  callback = function(evt)
+    vim.bo[evt.buf].buflisted = false
+    vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = evt.buf, silent = true })
+  end,
+})
+
 -- go to the last known location when opening a buffer
 autocmd('BufReadPost', {
   group = group,
