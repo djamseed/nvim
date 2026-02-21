@@ -37,7 +37,7 @@ vim.keymap.set('n', '<C-A-Down>', ':resize -2<CR>', { desc = 'Decrease window he
 vim.keymap.set('n', '<C-A-Left>', ':vertical resize -2<CR>', { desc = 'Decrease window width', noremap = true, silent = true })
 vim.keymap.set('n', '<C-A-Right>', ':vertical resize +2<CR>', { desc = 'Increase window width', noremap = true, silent = true })
 
--- use ctrl+alt+j/k to move lines up/down
+-- use J/K to move lines up/down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line(s) down', noremap = true, silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line(s) up', noremap = true, silent = true })
 
