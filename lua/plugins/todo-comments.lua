@@ -5,7 +5,7 @@ return {
   'folke/todo-comments.nvim',
   event = { 'BufReadPost', 'BufNewFile' },
   keys = {
-    { '<leader>xt', ':TodoQuickFix<CR>', desc = 'Find todos', noremap = true, silent = true },
+    { '<leader>xt', ':TodoFzfLua<CR>', desc = 'Find todos', noremap = true, silent = true },
   },
   opts = {},
 }
