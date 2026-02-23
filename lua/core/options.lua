@@ -56,6 +56,4 @@ vim.opt.updatetime = 100 -- faster completion
 
 -- use system clipboard as default register
 -- schedule the setting after `UiEnter` because it can increase startup-time
-vim.schedule(function()
-  vim.opt.clipboard:append('unnamedplus')
-end)
+vim.schedule(function() vim.opt.clipboard:append('unnamedplus') end)
