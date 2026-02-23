@@ -22,7 +22,7 @@ autocmd('TextYankPost', {
 -- wrap and check for spelling in text filetypes
 autocmd('FileType', {
     group = group,
-    pattern = { 'gitcommit', 'markdown' },
+    pattern = { 'gitcommit', 'markdown', 'text' },
     callback = function()
         vim.opt_local.wrap = true
         vim.opt_local.spell = true
