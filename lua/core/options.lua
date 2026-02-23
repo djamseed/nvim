@@ -51,8 +51,14 @@ vim.opt.isfname:append('@-@') -- include `@` in file names and path names
 vim.opt.iskeyword:append('-') -- treat words with dahes as a single word
 vim.opt.splitbelow = true -- new window from split is below the current one
 vim.opt.splitright = true -- new window is put right of the current one
+vim.opt.synmaxcol = 300 -- max column to search for syntax items
 vim.opt.timeoutlen = 500 -- time in milliseconds to wait for a mapped sequence to complete
 vim.opt.updatetime = 100 -- faster completion
+
+-- Folding
+vim.opt.foldmethod = 'expr' -- use expression for folding
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- use treesitter for folding
+vim.opt.foldlevel = 99
 
 -- use system clipboard as default register
 -- schedule the setting after `UiEnter` because it can increase startup-time
