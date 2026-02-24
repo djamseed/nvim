@@ -6,12 +6,10 @@ return {
     dependencies = {
         { 'nvim-treesitter/nvim-treesitter-context', opts = {} },
     },
+    lazy = false,
     build = ':TSUpdate',
-    event = { 'BufReadPost', 'BufNewFile' },
-    main = 'nvim-treesitter.configs', -- sets main module to use for opts
-    opts = {
-        auto_install = true,
-        ensure_installed = {
+    config = function()
+        local fileTypes = {
             'bash',
             'c',
             'c_sharp',
@@ -36,9 +34,13 @@ return {
             'vimdoc',
             'yaml',
             'zig',
-        },
-        sync_install = false,
-        highlight = { enable = true, additional_vim_regex_highlighting = false },
-        indent = { enable = true },
-    },
+        }
+
+        require('nvim-treesitter').install(fileTypes)
+
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = fileTypes,
+            callback = function() vim.treesitter.start() end,
+        })
+    end,
 }
