@@ -1,5 +1,5 @@
 -- Neovim frontend for opencode
--- https://github.com/sudo-tee/opencode.nvim?tab=readme-ov-file#-requirements
+-- https://github.com/sudo-tee/opencode.nvim
 
 return {
     'sudo-tee/opencode.nvim',
