@@ -7,6 +7,7 @@ vim.lsp.enable({
     'jsonls',
     'lua_ls',
     'ruff',
+    'sqlls',
     'yaml_ls',
     'zls',
 })

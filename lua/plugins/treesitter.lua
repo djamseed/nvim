@@ -26,6 +26,7 @@ return {
             'python',
             'query',
             'rust',
+            'sql',
             'textproto',
             'toml',
             'typescript',
