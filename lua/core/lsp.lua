@@ -68,9 +68,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 diagnostic_signs[vim.diagnostic.severity[type]] = icon
             end
             vim.diagnostic.config({
-                virtual_text = { current_line = true },
+                severity_sort = true,
                 underline = true,
+                virtual_text = { current_line = true },
+                jump = { float = true },
                 signs = { text = diagnostic_signs },
+                float = { border = 'rounded', source = 'if_many' },
             })
         end
     end,
