@@ -21,6 +21,7 @@ return {
         { '<F7>', '<cmd>DapStepInto<CR>', desc = 'Debug: Step into' },
         { '<F8>', '<cmd>DapStepOver<CR>', desc = 'Debug: Step over' },
         { '<S-F8>', '<cmd>DapStepOut<CR>', desc = 'Debug: Step out' },
+        { '<F9>', "<cmd>lua require('dapui').toggle()<CR>", desc = 'Debug: See last session result' },
         { '<leader>b', '<cmd>DapToggleBreakpoint<CR>', desc = 'Debug: Toggle breakpoint' },
         {
             '<leader>B',
@@ -28,7 +29,6 @@ return {
             desc = 'Debug: Set breakpoint',
         },
         { '<leader>bc', '<cmd>DapClearBreakpoints<CR>', desc = 'Debug: Clear all breakpoints' },
-        { '<F9>', "<cmd>lua require('dapui').toggle()<CR>", desc = 'Debug: See last session result' },
     },
     config = function()
         local dap = require('dap')
