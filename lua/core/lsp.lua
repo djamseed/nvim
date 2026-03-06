@@ -12,6 +12,22 @@ vim.lsp.enable({
     'zls',
 })
 
+vim.lsp.config('roslyn', {
+    settings = {
+        ['csharp|inlay_hints'] = {
+            csharp_enable_inlay_hints_for_implicit_object_creation = true,
+            csharp_enable_inlay_hints_for_implicit_variable_types = true,
+        },
+        ['csharp|code_lens'] = {
+            dotnet_enable_references_code_lens = true,
+            dotnet_enable_tests_code_lens = true,
+        },
+        ['csharp|symbol_search'] = {
+            dotnet_search_reference_assemblies = true,
+        },
+    },
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
     callback = function(event)
@@ -79,18 +95,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 
     -- Diagnostics keymap
-    vim.keymap.set(
-        'n',
-        '<leader>d',
-        ':FzfLua lsp_document_diagnostics<CR>',
-        { desc = 'Show buffer diagnostics', noremap = true, silent = true }
-    ),
-    vim.keymap.set(
-        'n',
-        '<leader>D',
-        ':FzfLua lsp_workspace_diagnostics<CR>',
-        { desc = 'Show workspace diagnostics', noremap = true, silent = true }
-    ),
+    vim.keymap.set('n', '<leader>d', ':FzfLua lsp_document_diagnostics<CR>', { desc = 'Show buffer diagnostics', noremap = true, silent = true }),
+    vim.keymap.set('n', '<leader>D', ':FzfLua lsp_workspace_diagnostics<CR>', { desc = 'Show workspace diagnostics', noremap = true, silent = true }),
 })
 
 -- get information on attached LSP clients

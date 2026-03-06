@@ -16,6 +16,7 @@ return {
     opts = {
         default_format_opts = { lsp_format = 'fallback' },
         formatters_by_ft = {
+            cs = { 'csharpier' },
             go = { 'goimports', 'gofumpt' },
             json = { 'prettier' },
             lua = { 'stylua' },

@@ -23,11 +23,7 @@ return {
         { '<S-F8>', '<cmd>DapStepOut<CR>', desc = 'Debug: Step out' },
         { '<F9>', "<cmd>lua require('dapui').toggle()<CR>", desc = 'Debug: See last session result' },
         { '<leader>b', '<cmd>DapToggleBreakpoint<CR>', desc = 'Debug: Toggle breakpoint' },
-        {
-            '<leader>B',
-            "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-            desc = 'Debug: Set breakpoint',
-        },
+        { '<leader>B', "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", desc = 'Debug: Set breakpoint' },
         { '<leader>bc', '<cmd>DapClearBreakpoints<CR>', desc = 'Debug: Clear all breakpoints' },
     },
     config = function()
@@ -67,6 +63,28 @@ return {
         dap.listeners.after.event_initialized['dapui_config'] = dapui.open
         dap.listeners.before.event_terminated['dapui_config'] = dapui.close
         dap.listeners.before.event_exited['dapui_config'] = dapui.close
+
+        -- .NET debugger setup
+        dap.adapters.coreclr = {
+            type = 'executable',
+            command = vim.fn.expand('~/.local/share/nvim/mason/packages/netcoredbg/libexec/netcoredbg/netcoredbg'),
+            args = { '--interpreter=vscode' },
+        }
+
+        dap.adapters.netcoredbg = {
+            type = 'executable',
+            command = vim.fn.expand('~/.local/share/nvim/mason/packages/netcoredbg/libexec/netcoredbg/netcoredbg'),
+            args = { '--interpreter=vscode' },
+        }
+
+        dap.configurations.cs = {
+            {
+                type = 'coreclr',
+                name = 'Launch - netcoredbg',
+                request = 'launch',
+                program = function() return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file') end,
+            },
+        }
 
         -- Go debugger setup
         require('dap-go').setup({
