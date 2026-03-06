@@ -40,12 +40,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         map('gD', vim.lsp.buf.declaration, 'Goto declaration')
         map('gO', vim.lsp.buf.document_symbol, 'Document symbols')
         map('gd', vim.lsp.buf.definition, 'Goto definition')
-        map('gs', vim.lsp.buf.signature_help, 'Signature help')
         map('gra', vim.lsp.buf.code_action, 'Code actions', { 'n', 'x' })
         map('gri', vim.lsp.buf.implementation, 'Goto implementation')
         map('grn', vim.lsp.buf.rename, 'Rename')
         map('grr', vim.lsp.buf.references, 'Goto references')
         map('grt', vim.lsp.buf.type_definition, 'Goto type definitions')
+        map('gs', vim.lsp.buf.signature_help, 'Signature help')
 
         -- highlight references of the word under the cursor
         local client = vim.lsp.get_client_by_id(event.data.client_id)
