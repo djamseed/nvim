@@ -8,11 +8,11 @@ return {
     -- improve viewing markdown files in Neovim
     {
         'MeanderingProgrammer/render-markdown.nvim',
-        ft = { 'markdown', 'opencode_output' },
+        ft = { 'markdown' },
         opts = {
             latex = { enabled = false },
             anti_conceal = { enabled = false },
-            file_types = { 'markdown', 'opencode_output' },
+            file_types = { 'markdown' },
         },
     },
     -- Neovim notifications and LSP progress messages

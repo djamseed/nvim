@@ -50,7 +50,6 @@ return {
             { '<leader>d', group = 'Diagnostics' },
             { '<leader>f', group = 'Find', mode = { 'n', 'v' } },
             { '<leader>g', group = 'Git hunk', mode = { 'n', 'v' } },
-            { '<leader>o', group = 'AI' },
             { '<leader>t', group = 'Toggle features' },
             { '<leader>x', group = 'Todos' },
         },
