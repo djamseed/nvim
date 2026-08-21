@@ -5,14 +5,16 @@ return {
     cmd = { 'lua-language-server' },
     filetypes = { 'lua' },
     root_markers = {
+        {
+            '.luarc.json',
+            '.luarc.jsonc',
+            '.luacheckrc',
+            '.stylua.toml',
+            'stylua.toml',
+            'selene.toml',
+            'selene.yml',
+        },
         '.git',
-        '.luacheckrc',
-        '.luarc.json',
-        '.luarc.jsonc',
-        '.stylua.toml',
-        'selene.toml',
-        'selene.yml',
-        'stylua.toml',
     },
     settings = {
         Lua = {
@@ -20,7 +22,7 @@ return {
             completion = { callSnippet = 'Replace' },
             diagnostics = {
                 disable = { 'missing-fields' },
-                globals = { 'vim', 'Snacks' },
+                globals = { 'vim' },
             },
             hint = {
                 enable = true,
