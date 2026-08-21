@@ -1,25 +1,26 @@
 local autocmd = vim.api.nvim_create_autocmd
 local group = vim.api.nvim_create_augroup('custom', { clear = true })
 
--- check if we need to reload the buffer when it changed
-autocmd({ 'CursorHold', 'FocusGained', 'TermClose', 'TermLeave' }, {
-    group = group,
-    command = 'checktime',
-})
-
--- disable automatic comment continuation
-autocmd('BufEnter', {
-    group = group,
-    callback = function() vim.opt.formatoptions = vim.opt.formatoptions - { 'c', 'r', 'o' } end,
-})
-
--- highlight text on yank
+-- Highlight text on yank
 autocmd('TextYankPost', {
     group = group,
     callback = function() vim.hl.on_yank({ hlgroup = 'IncSearch', timeout = 100 }) end,
 })
 
--- wrap and check for spelling in text filetypes
+-- Disable automatic comment continuation.
+local keep_comment_continuation = { cs = true }
+
+autocmd('FileType', {
+    group = group,
+    callback = function(event)
+        if keep_comment_continuation[event.match] then
+            return
+        end
+        vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
+    end,
+})
+
+-- Wrap and check for spelling in text filetypes
 autocmd('FileType', {
     group = group,
     pattern = { 'gitcommit', 'markdown', 'text' },
@@ -29,23 +30,7 @@ autocmd('FileType', {
     end,
 })
 
--- close some file types with <q>
-autocmd('FileType', {
-    group = group,
-    pattern = {
-        'checkhealth',
-        'help',
-        'lspinfo',
-        'notify',
-        'qf',
-    },
-    callback = function(evt)
-        vim.bo[evt.buf].buflisted = false
-        vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = evt.buf, silent = true })
-    end,
-})
-
--- go to the last known location when opening a buffer
+-- Go to the last known location when opening a buffer
 autocmd('BufReadPost', {
     group = group,
     callback = function(event)
@@ -63,7 +48,7 @@ autocmd('BufReadPost', {
     end,
 })
 
--- toggle cursorline.
+-- Toggle cursorline.
 autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnter' }, {
     group = group,
     callback = function() vim.opt_local.cursorline = true end,
@@ -74,7 +59,7 @@ autocmd({ 'FocusLost', 'InsertEnter', 'WinLeave' }, {
     callback = function() vim.opt_local.cursorline = false end,
 })
 
--- toggle relativenumber based on mode
+-- Toggle relativenumber based on mode
 autocmd('InsertLeave', {
     group = group,
     callback = function() vim.opt_local.relativenumber = true end,
@@ -83,4 +68,20 @@ autocmd('InsertLeave', {
 autocmd('InsertEnter', {
     group = group,
     callback = function() vim.opt_local.relativenumber = false end,
+})
+
+-- Close some filetypes with <q>
+vim.api.nvim_create_autocmd('FileType', {
+    group = group,
+    pattern = {
+        'help',
+        'lspinfo',
+        'notify',
+        'qf',
+        'checkhealth',
+    },
+    callback = function(evt)
+        vim.bo[evt.buf].buflisted = false
+        vim.keymap.set('n', 'q', '<cmd>close<CR>', { buffer = evt.buf, silent = true })
+    end,
 })

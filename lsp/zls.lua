@@ -1,5 +1,5 @@
---- Zig LSP implementation + Zig Language Server
---- https://github.com/zigtools/zls
+-- Zig LSP implementation + Zig Language Server
+-- https://github.com/zigtools/zls
 
 return {
     cmd = { 'zls' },
@@ -8,7 +8,7 @@ return {
     workspace_required = false,
     settings = {
         zls = {
-            enablye_inlay_hints = true,
+            enable_inlay_hints = true,
             enable_snippets = true,
             warn_style = true,
         },
