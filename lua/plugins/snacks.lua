@@ -29,6 +29,11 @@ require('snacks').setup({
                 },
             },
         },
+        sources = {
+            explorer = { hidden = true, exclude = { '.git' } },
+            files = { hidden = true },
+            grep = { hidden = true },
+        },
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
