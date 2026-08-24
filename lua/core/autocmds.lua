@@ -8,11 +8,11 @@ autocmd('TextYankPost', {
 })
 
 -- Disable automatic comment continuation.
-local keep_comment_continuation = { cs = true }
 
 autocmd('FileType', {
     group = group,
     callback = function(event)
+        local keep_comment_continuation = { cs = true }
         if keep_comment_continuation[event.match] then
             return
         end
