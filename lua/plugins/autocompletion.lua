@@ -33,7 +33,6 @@ require('blink.cmp').setup({
             },
         },
         menu = {
-            auto_show = function(ctx) return ctx.mode ~= 'cmdline' or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype()) end,
             draw = {
                 components = {
                     kind_icon = {
@@ -57,6 +56,16 @@ require('blink.cmp').setup({
         preset = 'default',
         ['<C-space>'] = {},
         ['<C-a>'] = { 'show', 'show_documentation', 'hide_documentation' },
+    },
+    cmdline = {
+        completion = {
+            -- Cmdline mode overrides `completion.menu.auto_show` with its own default, which
+            -- only shows the menu in the command-line window, so it has to be set here. Keep
+            -- the menu out of the way for `/` and `?`, where it hides the search matches.
+            menu = {
+                auto_show = function() return not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype()) end,
+            },
+        },
     },
     signature = {
         enabled = true,
