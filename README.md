@@ -61,6 +61,7 @@ language server is a new file in `lsp/` plus its name in the `vim.lsp.enable` li
 | tmux navigation | [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) |
 | Indent detection | [guess-indent](https://github.com/NMAC427/guess-indent.nvim) |
 | TODO highlighting | [todo-comments](https://github.com/folke/todo-comments.nvim) |
+| Org mode | [org.nvim](https://github.com/xheisenbugx/org.nvim) |
 
 Undotree, netrw replacement (snacks explorer), and the message/cmdline UI all come from
 Neovim itself — no plugin needed.
@@ -112,6 +113,11 @@ Leader is `<Space>`. `which-key` shows the rest — this is just the map of the 
 | `<leader>bb` / `<leader>bc` / `<leader>B` | Toggle / clear / conditional breakpoint |
 
 The whole DAP stack is lazy — nothing is configured until you press one of these.
+
+### Org (`<leader>o`)
+
+`oa` agenda, `oc` capture, `os`/`od` schedule/deadline. Files live in `~/org`; `g?` in any org
+or agenda buffer lists its keymaps.
 
 ### Toggles & misc
 

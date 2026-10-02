@@ -73,5 +73,11 @@ require('blink.cmp').setup({
     },
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
+        per_filetype = {
+            org = { inherit_defaults = true, 'org' },
+        },
+        providers = {
+            org = { name = 'Org', module = 'org.completion.blink' },
+        },
     },
 })
