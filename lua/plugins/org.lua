@@ -11,7 +11,7 @@ require('org').setup({
     default_notes_file = org_dir .. '/refile.org',
 
     -- `!` (timestamp) rather than `@` (note): a note prompt blocks bulk agenda actions
-    todo_keywords = { 'TODO(t) | DONE(d!) CANCELLED(x!)' },
+    todo_keywords = { 'TODO(t) WAITING(w!) SOMEDAY(s) | DONE(d!) CANCELLED(x!)' },
     enforce_todo_dependencies = true,
     enforce_todo_checkbox_dependencies = true,
 
@@ -71,6 +71,11 @@ require('org').setup({
         heatmap = {},
     },
 
+    -- <C-Space> is the tmux prefix
+    mappings = {
+        org = { toggle_checkbox = '<leader>o<Space>' },
+    },
+
     ui = {
         bullets = { '◉', '○', '✸', '✿' },
         checkboxes = { ' ', '◐', '✓' },
@@ -78,6 +83,8 @@ require('org').setup({
         -- oxocarbon links TODO to the same pink as level-1 headlines, so give it its own face
         todo_keyword_faces = {
             TODO = { fg = '#ff7eb6', bold = true },
+            WAITING = { fg = '#be95ff', bold = true },
+            SOMEDAY = { fg = '#78a9ff', bold = true },
             DONE = { fg = '#42be65', bold = true },
             CANCELLED = { fg = '#6f6f6f', strikethrough = true },
         },
