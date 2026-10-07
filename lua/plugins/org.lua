@@ -69,6 +69,38 @@ require('org').setup({
         sidebar = {},
         timeline = {},
         heatmap = {},
+        -- Rooted at ~/org so dailies and notes share one index; top-level files (refile,
+        -- tutorial) and the archive stay out of it
+        roam = {
+            directory = org_dir,
+            exclude = {
+                'data/',
+                'archive/',
+                function(relpath) return not relpath:find('/', 1, true) end,
+            },
+            capture_templates = {
+                d = {
+                    description = 'default',
+                    type = 'plain',
+                    template = '%?',
+                    target = 'notes/${slug}.org',
+                    head = '#+title: ${title}\n',
+                    unnarrowed = true,
+                },
+            },
+            capture_ref_templates = {
+                r = {
+                    description = 'ref',
+                    type = 'plain',
+                    template = '%?',
+                    target = 'notes/${slug}.org',
+                    head = '#+title: ${title}\n',
+                    unnarrowed = true,
+                },
+            },
+            extract_new_file_path = 'notes/${slug}.org',
+            dailies = { directory = 'journal/' },
+        },
     },
 
     -- <C-Space> is the tmux prefix
