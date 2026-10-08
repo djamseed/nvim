@@ -13,13 +13,26 @@ below. They mirror Emacs `org-mode-map` one-for-one; `g?` lists them.
 
 | Path | Purpose |
 | --- | --- |
-| `~/org/journal/` | Daily notes, one `YYYY-MM-DD.org` per day (roam dailies) |
-| `~/org/notes/` | Roam notes, one `slug.org` per node |
-| `~/org/refile.org` | Capture inbox (`<leader>oc`) |
+| `~/org/inbox/tasks.org` | Captured tasks and quick notes (`<leader>oc`, `<leader>oq`) |
+| `~/org/inbox/` | New roam notes, until processed |
+| `~/org/journal/` | Daily notes, one `YYYY-MM-DD.org` per day; weekly reviews land here too |
+| `~/org/notes/` | Processed roam notes, one `slug.org` per node |
 | `~/org/archive/` | Archived subtrees |
 
-Agenda reads `journal/` and `notes/`. Roam indexes both; top-level files and `archive/` are
+Agenda and roam read `inbox/`, `journal/` and `notes/`. Top-level files and `archive/` are
 left out.
+
+## Workflow
+
+1. **Capture**: tasks go to `inbox/tasks.org` (`<leader>oc`, `<leader>oq`), new notes to
+   `inbox/` (`<leader>omf` with a new title), the day's log to the daily note (`<leader>omj`).
+2. **Process** (during the weekly review or whenever):
+   - Tasks: `<leader>or` moves them under a note or into a daily note.
+   - Notes: rename the file from `inbox/` to `notes/` in the explorer (`\`). Links use IDs, so
+     they survive the move; run `:Org roam_db_sync` if you moved files outside Neovim.
+   - Part of a note worth its own: `<leader>omx` extracts it into `notes/`.
+3. **Review** weekly with `<leader>oW`. Finishing (`F`) captures the summary and your
+   reflection answers into that day's daily note; confirm with `<leader>ow`.
 
 ## Global
 
@@ -28,19 +41,19 @@ Available from any buffer.
 | Key | Action |
 | --- | --- |
 | `<leader>oa` | Agenda |
-| `<leader>oc` | Capture (`t` task, `n` note → `refile.org`) |
-| `<leader>oq` | Quick add (natural language: `Call Bob fri 3pm #work !A`) |
+| `<leader>oc` | Capture (`t` task, `n` note → `inbox/tasks.org`) |
+| `<leader>oq` | Quick add a task to `inbox/tasks.org` (`Call Bob fri 3pm #work !A`) |
 | `<leader>og` | Go to a heading in any org file |
 | `<leader>ols` | Store link to the current location |
 | `<leader>oxj` / `<leader>oxo` / `<leader>oxq` | Clock: go to / out / cancel |
-| `<leader>oW` | Weekly review |
+| `<leader>oW` | Weekly review (see [below](#weekly-review)) |
 | `<leader>oVt` / `<leader>oVh` / `<leader>oVs` | Views: timeline / heatmap / sidebar |
 
 ## Roam (`<leader>om`)
 
 | Key | Action |
 | --- | --- |
-| `<leader>omf` | Find a node; typing a missing title creates it in `notes/` |
+| `<leader>omf` | Find a node; typing a missing title creates it in `inbox/` |
 | `<leader>omi` | Insert a link to a node (Visual: selection becomes the title) |
 | `<leader>omc` | Capture into a node |
 | `<leader>oml` | Toggle the backlinks window |
@@ -69,6 +82,27 @@ existing note.
 | `<leader>omdd` | Pick a date from the calendar |
 | `<leader>omdn` / `<leader>omdp` | Next / previous existing note |
 | `<leader>omj` | Capture an entry into today's note |
+
+## Weekly review
+
+`<leader>oW` opens a float that steps through: empty the inbox (`inbox/tasks.org`), stuck
+projects, `WAITING`, overdue, the next two weeks, `SOMEDAY`, time clocked last week and three
+reflection questions. Progress is saved after every change, so you can quit and resume.
+
+| Key | Action |
+| --- | --- |
+| `n` / `]]` | Next step |
+| `p` / `[[` | Previous step |
+| `<CR>` | Open the entry (on a question: answer it) |
+| `r` | Refile the entry |
+| `t` | Change TODO state |
+| `s` / `S` | Schedule / deadline |
+| `d` | Delete the entry (asks first) |
+| `x` | Skip the entry |
+| `i` | Add a note |
+| `R` | Refresh |
+| `F` | Finish: capture the summary into today's daily note |
+| `q` / `<Esc>` | Quit (resume later with `<leader>oW`) |
 
 ## Org buffers
 
